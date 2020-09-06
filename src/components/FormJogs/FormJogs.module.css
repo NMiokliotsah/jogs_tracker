@@ -1,0 +1,57 @@
+.formJogs {
+    position: relative;
+    width: 503px;
+    height: 379px;
+    border-radius: 44px;
+    background-color: #7ed321;
+    margin: 75px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.formJogs form {
+    padding-top: 101px;
+}
+
+.formJogs input {
+    width: 236px;
+    height: 31px;
+    border-radius: 7px;
+    border: solid 1px #979797;
+    outline: none;
+    margin-left: 16px ;
+
+}
+
+.formJogs label {
+    display: inline-block;
+    width: 73.8px;
+    height: 19px;
+    font-family: "SFUIText";
+    font-size: 16px;
+}
+
+.inputTime, .inputDate {
+    margin-top: 25px;
+}
+
+.btnSave {
+    width: 320px;
+    height: 42px;
+    border-radius: 25.2px;
+    border: solid 2px white;
+    background-color: #7ed321;
+    color: white;
+    margin-top: 46px;
+    cursor: pointer;
+    outline: none;
+}
+
+.imgCancel {
+    width: 27px;
+    height: 27px;
+    position: absolute;
+    top: 27px;
+    right: 27px;
+    cursor: pointer;
+}

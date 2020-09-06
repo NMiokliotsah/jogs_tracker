@@ -1,0 +1,18 @@
+.headerInfo {
+    width: 89px;
+    height: 43px;
+    color: #7ed321;
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.info {
+    width: 614px;
+    margin: 85px auto;
+}
+
+.info p {
+    font-size: 14px;
+    line-height: 1.71;
+}

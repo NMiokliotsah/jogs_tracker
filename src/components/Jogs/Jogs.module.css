@@ -1,0 +1,78 @@
+.filter {
+    width: 100%;
+    height: 60px;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timePicker {
+    width: 126px;
+    height: 31px;
+    border-radius: 11px;
+    border: solid 1px #979797;
+    margin-left: 15px;
+    outline: none;
+}
+
+.dateTo {
+    margin-left: 45px;
+}
+
+.dateLabel {
+  font-size: 13px;
+  color: #979797;
+}
+
+.jogsItem {
+    margin-bottom: 173px;
+}
+
+.imgAdd {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    cursor: pointer;
+}
+
+.createJog {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.createJog p {
+    margin-top: 47px;
+    font-size: 24px;
+    line-height: 1.21;
+    color: #b0b0b0
+}
+
+.createJog button {
+    margin-top: 80px;
+    width: 249px;
+    height: 60px;
+    border-radius: 36px;
+    border: solid 3px #e990f9;
+    color:  #e990f9;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+@media screen and (max-width: 500px) {
+    .dateLabel {
+        padding-left: 18px;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    .dateTo {
+        margin: 0;
+    }
+
+    .jogsItem {
+        border-bottom: 1px solid black;
+    }
+}

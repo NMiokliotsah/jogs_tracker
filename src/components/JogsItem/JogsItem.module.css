@@ -1,0 +1,34 @@
+.jogs {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.imgJogs {
+    display: flex;
+    align-items: center;
+}
+
+.imgJogs img {
+    width: 87px;
+    height: 87px;
+}
+
+.descriptionJogs {
+    margin-left: 46px;
+}
+
+.descriptionJogs :not(:first-child) {
+    font-weight: bold;
+}
+
+.descriptionJogs  p{
+    margin: 2px 0;
+}
+
+.jogsSpan {
+    font-weight: normal;
+}

@@ -1,0 +1,51 @@
+.logo {
+    padding: 30px 37px;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7ed321;
+}
+
+.navbarMenu {
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbarMenu a{
+    margin-left: 45px;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+}
+
+.navbarMenu img {
+    margin-left: 56px;
+}
+
+.navbarMenu a:hover{
+    border-bottom: 2px solid white;
+}
+
+.imgFilter {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.slideBar {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .navbar {
+        display: none;
+    }
+  }
