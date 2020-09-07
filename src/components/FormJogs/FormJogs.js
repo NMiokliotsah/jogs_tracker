@@ -1,46 +1,47 @@
 import React from 'react';
-import Header from '../Header/Header';
 import style from './FormJogs.module.css';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import img_cancel from '../../img/cancel.png';
+import HeaderContainer from '../Header/HeaderContainer';
 
 export default function FormJogs(props) {
-
-    return (
+    return props.redirect ? <Redirect to="/jogs" /> :
         <>
-            {props.redirect && <Redirect to="/jogs" />}
-            <Header showNavbar={true} />
-            <img alt="" src={img_cancel} />
-
+            <HeaderContainer showNavbar={true} />
             <div className={style.formJogs}>
-                <img alt="" onClick={props.onClickImg} className={style.imgCancel} src={img_cancel} />
-
+                <Link to="/jogs">
+                    <img
+                        alt=""
+                        onClick={props.onClickImgCancel}
+                        className={style.imgCancel}
+                        src={img_cancel} />
+                </Link>
                 <form>
                     <div>
-                        <label for="distance">Distance</label>
+                        <label>Distance</label>
                         <input
-                            id="distance"
                             name="distance"
+                            value={props.distance}
                             onChange={props.handlerInput}
                             placeholder="meters"
                             className={style.inputDistance}
                             required />
                     </div>
                     <div>
-                        <label for="time">Time</label>
+                        <label>Time</label>
                         <input
-                            id="time"
                             name="time"
+                            value={props.time}
                             onChange={props.handlerInput}
                             placeholder="minutes"
                             className={style.inputTime}
                             required />
                     </div>
                     <div>
-                        <label for="date">Date</label>
+                        <label>Date</label>
                         <input
-                            id="date"
                             name="date"
+                            value={props.date}
                             onChange={props.handlerInput}
                             placeholder="dd.mm.yyyy"
                             className={style.inputDate}
@@ -50,5 +51,4 @@ export default function FormJogs(props) {
                 </form>
             </div>
         </>
-    );
 }

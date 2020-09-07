@@ -8,11 +8,18 @@
 }
 
 .info {
-    width: 614px;
+    max-width: 614px;
     margin: 85px auto;
 }
 
 .info p {
     font-size: 14px;
     line-height: 1.71;
+}
+
+@media screen and (max-width: 800px) {
+    .info {
+        padding: 0 25px;
+        margin-top: 24px;
+    }
 }

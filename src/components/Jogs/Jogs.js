@@ -3,15 +3,15 @@ import style from './Jogs.module.css';
 import JogsItemContainer from '../JogsItem/JogsItemContainer';
 import img_add from '../../img/add.png';
 import img_sad from '../../img/sad-rounded-square-emoticon.png';
-import { Redirect } from 'react-router-dom';
-import HeaderContainer from '../Header/HeaderComponent';
+import { Redirect, Link } from 'react-router-dom';
+import HeaderContainer from '../Header/HeaderContainer';
 
 export default function Jogs(props) {
     return (
         <>
             {props.redirect && <Redirect to="/newJog" />}
             <HeaderContainer showNavbar={true} showFilter={true} />
-            <div className={style.filter}>
+            {props.showFilterBar && <div className={style.filter}>
                 <div>
                     <label for="dateFrom" className={style.dateLabel}>Date from</label>
                     <input
@@ -31,18 +31,19 @@ export default function Jogs(props) {
                         className={style.timePicker} />
                 </div>
             </div>
+            }
             {props.jogs.length > 0 ?
                 <div>
-                    <div className={style.jogsItem}>
+                    <div className={style.jogItems}>
                         <JogsItemContainer dateFrom={props.dateFrom} dateTo={props.dateTo} jogs={props.jogs} />
                     </div>
-                    <img onClick={props.redirectToFormJog} alt="" className={style.imgAdd} src={img_add}></img>
+                    <Link to="/newJog"><img alt="" className={style.imgAdd} src={img_add} /></Link>
                 </div>
                 :
                 <div className={style.createJog}>
-                    <img onClick={props.redirectToFormJog} src={img_sad} alt=""></img>
+                    <img src={img_sad} alt=""></img>
                     <p>Nothing is there</p>
-                    <button>Create your jog first</button>
+                    <Link to="/newJog"><button>Create your jog first</button></Link>
                 </div>
             }
         </>

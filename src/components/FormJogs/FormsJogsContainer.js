@@ -1,25 +1,47 @@
 import React, { useState } from 'react';
 import FormJogs from './FormJogs';
 import { api } from '../../api/api';
+import { connect } from 'react-redux';
+import { refactoringDate, refactoringDistance } from '../../utils/refactoringJogsData';
+import { setSelectedJog } from '../../redux/jogs-reducers';
 
-export default function FormJogsContainer() {
-    const [distance, setDistance] = useState(null);
-    const [time, setTime] = useState(null);
-    const [date, setDate] = useState(null);
+function FormJogsContainer(props) {
+    const selectedJog = props.selectedJog;
+    const [distance, setDistance] = useState((selectedJog && refactoringDistance(selectedJog.distance)) || "");
+    const [time, setTime] = useState((selectedJog && selectedJog.time) || "");
+    const [date, setDate] = useState((selectedJog && refactoringDate(selectedJog.date)) || "");
     const [redirect, setRedirect] = useState(false);
 
-    const setJog = e => {
+    const setJog = async e => {
         e.preventDefault();
-        api.setJog({
-            date,
-            time,
-            distance
-        }).then(res => {
-            if (!res.error_message) setRedirect(true);
-        });
+        if (props.selectedJog) {
+            await api.changeJog({
+                date,
+                time: +time,
+                distance: +distance * 100,
+                jog_id: props.selectedJog.id,
+                user_id: props.selectedJog.user_id
+            }).then(res => {
+                if (!res.error_message) {
+                    props.setSelectedJog(null);
+                    setRedirect(true);
+                }
+            });
+        } else {
+            await api.setJog({
+                date,
+                time,
+                distance
+            }).then(res => {
+                if (!res.error_message) {
+                    props.setSelectedJog(null);
+                    setRedirect(true);
+                }
+            });
+        }
     }
-    const onClickImg = () => {
-         setRedirect(true);
+    const onClickImgCancel = () => {
+        props.setSelectedJog(null);
     }
     const handlerInput = e => {
         const name = e.target.name;
@@ -27,10 +49,10 @@ export default function FormJogsContainer() {
 
         switch (name) {
             case "distance":
-                setDistance(+value);
+                setDistance(value);
                 break;
             case "time":
-                setTime(+value);
+                setTime(value);
                 break;
             case "date":
                 setDate(value);
@@ -42,5 +64,17 @@ export default function FormJogsContainer() {
         setJog={setJog}
         handlerInput={handlerInput}
         redirect={redirect}
-        onClickImg={onClickImg} />
+        onClickImgCancel={onClickImgCancel}
+        selectedJog={props.selectedJog}
+        distance={distance}
+        time={time}
+        date={date} />
 }
+
+const mapToStateProps = state => ({
+    redirect: state.jogs.redirect,
+    selectedJog: state.jogs.selectedJog
+});
+
+
+export default connect(mapToStateProps, { setSelectedJog })(FormJogsContainer);

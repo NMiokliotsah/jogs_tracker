@@ -33,5 +33,18 @@ export const api = {
             body: JSON.stringify(jog)
         })
             .then(res => (res.json()));
+    },
+
+    changeJog(jog) {
+        return fetch("https://jogtracker.herokuapp.com/api/v1/data/jog", {
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(jog)
+        })
+            .then(res => (res.json()));
     }
 }

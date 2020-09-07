@@ -25,7 +25,7 @@
   color: #979797;
 }
 
-.jogsItem {
+.jogItems {
     margin-bottom: 173px;
 }
 
@@ -62,7 +62,7 @@
     outline: none;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .dateLabel {
         padding-left: 18px;
         margin-bottom: 10px;
@@ -71,8 +71,17 @@
     .dateTo {
         margin: 0;
     }
+    .imgAdd {
+        width: 36pt;
+        height: 36pt;
+        position: fixed;
+        right: 30pt;
+        bottom: 30pt;
+        cursor: pointer;
+    }
 
-    .jogsItem {
-        border-bottom: 1px solid black;
+    .createJog img {
+        width: 85pt;
+        height: 85pt;
     }
 }

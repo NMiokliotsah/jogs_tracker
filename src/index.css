@@ -24,6 +24,7 @@ code {
   margin-bottom: 10px;
   color: black;
   transition: color 0.2s;
+  outline: none;
 }
 
 .bm-item:hover {
@@ -32,11 +33,15 @@ code {
 
 .bm-burger-button {
   display: none;
-  position: fixed;
+  position: absolute;
   width: 36px;
   height: 30px;
   right: 36px;
   top: 36px;
+}
+
+.bm-burger-button button{
+  outline: none;
 }
 
 .bm-menu-wrap {

@@ -1,19 +1,19 @@
 import React from 'react';
 import Jogs from './Jogs';
 import { api } from '../../api/api';
+import { connect } from 'react-redux';
 
-export default class JogsContainer extends React.Component {
+class JogsContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             jogs: [],
-            redirect: false,
             dateFrom: null,
             dateTo: null
         }
     }
     addJog() {
-        this.setState({ redirect: true });
+        this.props.redirectToNewJog(true);
     }
     handlerInput(e) {
         const name = e.target.name;
@@ -31,7 +31,6 @@ export default class JogsContainer extends React.Component {
                 this.setState({ jogs: res.response.jogs });
             });
     }
-
     render() {
         return <Jogs
             jogs={this.state.jogs}
@@ -39,6 +38,14 @@ export default class JogsContainer extends React.Component {
             dateTo={this.state.dateTo}
             redirectToFormJog={this.addJog.bind(this)}
             handlerInput={this.handlerInput.bind(this)}
-            redirect={this.state.redirect} />
+            redirect={this.props.redirect}
+            showFilterBar={this.props.showFilterBar} />
     }
 }
+
+const mapToStateProps = state => ({
+    redirect: state.jogs.redirect,
+    showFilterBar: state.jogs.filterBar
+});
+
+export default connect(mapToStateProps, {})(JogsContainer);

@@ -9,22 +9,26 @@ import SideBar from '../SideBar/SideBar';
 export default function Header(props) {
     return (
         <header>
-            <SideBar className="slideBar" pageWrapId={"page-wrap"} />
+            {props.showNavbar && <SideBar className="slideBar" pageWrapId={"page-wrap"} />}
             <div className={style.wrapper}>
-                <a><img className={style.logo} src={logo} /></a>
+                <Link exact to="/"><img className={style.logo} src={logo} /></Link>
                 <nav className={style.navbar}>
                     <div className={style.navbarMenu} style={{ display: props.showNavbar ? "flex" : "none" }}>
-                        <Link to="/jogs">Jogs</Link>
-                        <Link to="/info">Info</Link>
-                        <Link to="/#">Contact Us</Link>
-                        {props.showFilter && <img
+                        <div className={style.navLinks}>
+                            <Link to="/jogs">Jogs</Link>
+                            <Link to="/info">Info</Link>
+                            <Link to="/contact">Contact Us</Link>
+                        </div>
+                        {props.showFilterBar && <img
+                            onClick={props.onClickFilterIcon}
                             alt=""
-                            className={style.imgFilter}
+                            className={style.imgFilter + " " + style.imgShowFilter}
                             src={img_filter} />
                         }
-                        {!props.showFilter && <img
+                        {!props.showFilterBar && <img
+                            onClick={props.onClickFilterIcon}
                             alt=""
-                            className={style.imgFilter}
+                            className={style.imgFilter + " " + style.imgHideFilter}
                             src={img_filter_white} />
                         }
                     </div>

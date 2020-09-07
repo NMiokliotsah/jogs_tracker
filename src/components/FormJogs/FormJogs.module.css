@@ -1,6 +1,6 @@
 .formJogs {
     position: relative;
-    width: 503px;
+    max-width: 503px;
     height: 379px;
     border-radius: 44px;
     background-color: #7ed321;
@@ -20,7 +20,6 @@
     border: solid 1px #979797;
     outline: none;
     margin-left: 16px ;
-
 }
 
 .formJogs label {
@@ -54,4 +53,39 @@
     top: 27px;
     right: 27px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 570px) {
+    .formJogs {
+        margin: 75px 24px;
+        height: 390px;
+    }
+
+    .formJogs label {
+        display: block;
+        padding-bottom: 6px;
+    }
+
+    .formJogs form {
+        padding-top: 64px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .formJogs input {
+        margin: 0px ;
+        margin-bottom: 20px;
+    }
+
+    .imgCancel {
+        width: 18px;
+        height: 18px;
+    }
+
+    .btnSave {
+        width: 272px;
+        margin-top: 24px;
+        margin-bottom: 37pt;
+    }
 }

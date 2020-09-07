@@ -8,7 +8,7 @@ export default function SideBar(props) {
             <Menu {...props}>
                 <Link to="/jogs">Jogs</Link>
                 <Link to="/info">Info</Link>
-                <Link to="/#">Contact Us</Link>
+                <Link to="/contact">Contact Us</Link>
             </Menu>
         </div>
 

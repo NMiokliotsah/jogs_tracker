@@ -45,7 +45,22 @@
 }
 
 @media screen and (max-width: 720px) {
-    .navbar {
+    .navLinks {
         display: none;
     }
-  }
+    .imgFilter {
+        margin-right: 100px;
+    }
+    .logo {
+        width: 100px;
+    }
+    .imgShowFilter {
+        width: 39pt;
+        height: 39pt;
+    }
+
+    .imgHideFilter {
+        width: 26pt;
+        height: 26pt;
+    }
+}

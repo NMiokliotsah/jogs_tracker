@@ -1,11 +1,11 @@
-.Login {
+.login {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 80px;
 }
 
-.Container {
+.container {
     width: 503px;
     height: 379px;
     display: flex;
@@ -13,6 +13,10 @@
     align-items: center;
     background-color: #e990f9;
     border-radius: 44px;
+}
+
+.bearFaceMobile {
+    display: none;
 }
 
 .btnLogin {
@@ -39,4 +43,28 @@
     height: 150px;
     object-fit: contain;
     padding-top: 77px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        background-color: inherit;
+    }
+    .bearFace {
+        display: none;
+    }
+    .bearFaceMobile {
+        display: block;
+    }
+    .btnLogin {
+        background-color: #ffffff;
+        width: 151px;
+        height: 60px;
+        border-radius: 36px;
+        border: solid 3px #e990f9;
+        margin-top: 56px;
+        outline: none;
+        font-size: 18px;
+        color: #e990f9;
+        font-weight: bold;
+    }
 }

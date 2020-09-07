@@ -1,27 +1,17 @@
 import React from 'react';
 import JogsItem from './JogsItem';
+import { connect } from 'react-redux';
+import { setSelectedJog } from '../../redux/jogs-reducers';
 
-const options = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-}
-
-const rounded = number => {
-    return +number.toFixed(2);
-}
-
-export default class JogsItemContainer extends React.Component {
+class JogsItemContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            jogs: props.jogs
+            jogs: props.jogs,
+            redirect: false
         }
     }
 
-    refactoringDate(date) {
-        return new Intl.DateTimeFormat('ru-RU', options).format(new Date(date));
-    }
     filterDate() {
         const dateFrom = this.props.dateFrom ? new Date(this.props.dateFrom).setHours(0, 0, 0, 0) : null;
         const dateTo = this.props.dateTo ? new Date(this.props.dateTo).setHours(0, 0, 0, 0) : null;
@@ -50,19 +40,18 @@ export default class JogsItemContainer extends React.Component {
             }
         });
     }
-    calculateSpeed(distance, time) {
-        return rounded((distance / 100) / time);
-    }
-    refactoringDistance(distance) {
-        return (distance / 100);
+    setRedirect() {
+        this.setState({ redirect: true });
     }
 
     render() {
         return <JogsItem
             jogs={this.props.jogs}
-            refactoringDate={this.refactoringDate}
-            calculateSpeed={this.calculateSpeed}
-            refactoringDistance={this.refactoringDistance}
-            filterDate={this.filterDate.bind(this)} />
+            filterDate={this.filterDate.bind(this)}
+            redirect={this.state.redirect}
+            setRedirect={this.setRedirect.bind(this)}
+            setSelectedJog={this.props.setSelectedJog} />
     }
 }
+
+export default connect(null, { setSelectedJog })(JogsItemContainer);
